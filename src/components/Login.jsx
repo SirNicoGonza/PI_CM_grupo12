@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-//import "./Login.css";
+import "../assets/Login.css";
 import { useState } from "react";
 import useFetch from "../hooks/useFetch";
 import { useAuth } from "../contexts/AuthContext";
@@ -57,64 +57,62 @@ function Login() {
 
     return (
         <>
-            <div className="login-container container">
-                <div className="container">
-                    <div className="row justify-content-center">
-                        <div>
-                            <form onSubmit={handleSubmit}>
-                                <div className="form-group">
-                                    <label
-                                        htmlFor="formUsername"
-                                        className="formLabel"
-                                    >
-                                        Nombre de Usuario
-                                    </label>
-                                    <input
-                                        required
-                                        type="text"
-                                        className="formInput"
-                                        id="formUsername"
-                                        placeholder="Ingresa tu usuario"
-                                        value={username}
-                                        onChange={handleUsernameChange}
-                                    />
-                                </div>
-                                <br />
-                                <div className="form-group">
-                                    <label
-                                        htmlFor="formPassword"
-                                        className="formLabel"
-                                    >
-                                        Contraseña
-                                    </label>
-                                    <input
-                                        required
-                                        type="password"
-                                        className="formInput"
-                                        id="formPassword"
-                                        placeholder="Ingresa tu contraseña"
-                                        value={password}
-                                        onChange={handlePasswordChange}
-                                    />
-                                </div>
-                                <br />
-                                <div className="form-group">
-                                    <button
-                                        type="submit"
-                                        className="btn btn-primary btn-login"
-                                    >
-                                        Iniciar Sesión
-                                    </button>
-                                </div>
-                            </form>
+            <h1>Poné Play</h1>
+            <div id="container-login">
+                <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+                <div id="title">
+                    <i className="material-icons lock">lock</i> Login
+                </div>
 
-                            <div className="mt-3" style={{ fontSize: "15px" }}>
-                                <br />
-                                Si todavía no tienes una cuenta, puedes{" "}
-                                <a href="/signup">Regístrate</a>.
-                            </div>
+                <form id="login-form" onSubmit={handleSubmit}>
+                    <div className="input">
+                        <div className="input-addon">
+                            <i className="material-icons">face</i>
                         </div>
+                        <input
+                            required
+                            type="text"
+                            className="formInput"
+                            id="username"
+                            placeholder="Ingresa tu usuario"
+                            value={username}
+                            onChange={handleUsernameChange}
+                        />
                     </div>
+                    <div className="clearfix"></div>
+                    <div className="input">
+                        <div className="input-addon">
+                            <i className="material-icons">vpn_key</i>
+                        </div>
+                        <input
+                            required
+                            type="password"
+                            className="formInput"
+                            id="password"
+                            placeholder="Ingresa tu contraseña"
+                            value={password}
+                            onChange={handlePasswordChange}
+                        />
+                    </div>
+                    <br />
+                    <div className="form-group">
+                        <button
+                            type="submit"
+                            className="btn btn-primary btn-login"
+                        >
+                            Iniciar Sesión
+                        </button>
+                    </div>
+                </form>
+                <div className="forgot-password">
+                    <a href="#">¿Olvistaste tu contraseña?</a>
+                </div>
+                <div className="privacy">
+                    <a href="#">Politias de privacidad</a>
+                </div>
+                <div className="register">
+                    ¿No tienes cuenta?
+                    <a href="#"><button id="register-link">Registraste aquí</button></a>
                 </div>
             </div>
         </>
