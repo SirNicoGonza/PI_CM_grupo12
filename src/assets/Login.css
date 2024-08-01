@@ -191,3 +191,9 @@ input[type=submit] {
     cursor: pointer;
     border-radius: 3px;
 }
+
+.error-massege {
+    font-family: 'Raleway', sans-serif;
+    color: firebrick;
+    margin-bottom: 10px;
+}

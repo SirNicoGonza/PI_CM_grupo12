@@ -8,6 +8,7 @@ function Login() {
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
     const [triggerFetch, setTriggerFetch] = useState(false);
+    const [errorMensaje, setErrorMensaje] = useState("");
 
     const [{ data, error, isLoading}, doFetch ] = useFetch(
         `${import.meta.env.VITE_API_BASE_URL}/api-auth/`, {
@@ -27,12 +28,12 @@ function Login() {
     if (data) {
         const token = data.token;
         localStorage.setItem("token", token.token);
-        // Modificar?
-        window.location.href = "/home";
+        window.location.href = "/home"; // modificar?
+        login(data.token)
     }
     
     if (error) {
-        alert("Usuario o contraseña incorrectos");
+        setErrorMensaje("Usuario y/o contraseña incorrectos");
     };
 
 
@@ -106,7 +107,7 @@ function Login() {
                             Iniciar Sesión
                         </button>
                         {isLoading && triggerFetch && (<p>Cargando...</p>)}
-                        {error && <p>Usuario y/o Contraseña incorrectos</p>}
+                        { errorMensaje && <p className="error-message">{errorMensaje}</p>}
                     </div>
                 </form>
                 <div className="forgot-password">
