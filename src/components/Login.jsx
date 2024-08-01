@@ -27,6 +27,7 @@ function Login() {
     if (data) {
         const token = data.token;
         localStorage.setItem("token", token.token);
+        // Modificar?
         window.location.href = "/home";
     }
     
@@ -47,13 +48,15 @@ function Login() {
         e.preventDefault();
         setTriggerFetch(true);
         doFetch();
-        
-        useEffect(() => {
-            if (data && !error && triggerFetch) {
-                login(data.token);
-            }
-        }, [data, error, triggerFetch]);
     };
+        
+    //useEffect(() => {
+    //        if (data && !error && triggerFetch) {
+    //            login(data.token);
+    //        }
+    //    }, [data, error, triggerFetch]);
+    
+    //console.log(error);
 
     return (
         <>
@@ -102,6 +105,8 @@ function Login() {
                         >
                             Iniciar Sesión
                         </button>
+                        {isLoading && triggerFetch && (<p>Cargando...</p>)}
+                        {error && <p>Usuario y/o Contraseña incorrectos</p>}
                     </div>
                 </form>
                 <div className="forgot-password">
