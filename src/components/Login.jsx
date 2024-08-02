@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+//import { Link } from "react-router-dom";
 import "../assets/Login.css";
 import { useState } from "react";
 import useFetch from "../hooks/useFetch";
@@ -27,7 +27,7 @@ function Login() {
 
     if (data) {
         const token = data.token;
-        localStorage.setItem("token", token.token);
+        //localStorage.setItem("token", token.token);
         window.location.href = "/home"; // modificar?
         login(data.token)
     }
@@ -61,7 +61,7 @@ function Login() {
 
     return (
         <>
-            <h1>Poné Play</h1>
+            <h1 id="maintitle">Poné Play</h1>
             <div id="container-login">
                 <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
                 <div id="title">
@@ -102,7 +102,7 @@ function Login() {
                     <div className="form-group">
                         <button
                             type="submit"
-                            className="btn btn-primary btn-login"
+                            className="my-button"
                         >
                             Iniciar Sesión
                         </button>
@@ -110,6 +110,7 @@ function Login() {
                         { errorMensaje && <p className="error-message">{errorMensaje}</p>}
                     </div>
                 </form>
+                <br />
                 <div className="forgot-password">
                     <a href="#">¿Olvistaste tu contraseña?</a>
                 </div>
