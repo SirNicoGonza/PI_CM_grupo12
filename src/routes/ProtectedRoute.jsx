@@ -5,9 +5,9 @@ export default function ProtectedRoute({children}){
     const { isAuthenticated } = useAuth("state");
     const location = useLocation();
 
-    if(isAuthenticated){
+    if(!isAuthenticated){
         return <Navigate to="/login" state={{from:location}} />
     }
 
-    return
+    return children;
 }

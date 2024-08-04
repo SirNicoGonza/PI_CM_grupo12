@@ -1,6 +1,6 @@
-//import { Link } from "react-router-dom";
 import "../assets/Login.css";
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { useNavigate, useLocation } from "react-router-dom";
 import useFetch from "../hooks/useFetch";
 import { useAuth } from "../contexts/AuthContext";
 
@@ -24,17 +24,24 @@ function Login() {
         });
 
     const {login} = useAuth("actions");
-
-    if (data) {
-        const token = data.token;
-        //localStorage.setItem("token", token.token);
-        window.location.href = "/home"; // modificar?
-        login(data.token)
-    }
+    const navigate = useNavigate();
+    const location = useLocation();
+    const from = location.state?.from?.pathname || "/home";
     
-    if (error) {
+    useEffect(() => {
+        if (data) {
+        const token = data.token;
+        login(token);
+        navigate(from, {replace: true});
+        }
+    }, [data, login, navigate, from]);
+
+    useEffect(() => {
+        if (error) {
         setErrorMensaje("Usuario y/o contraseña incorrectos");
-    };
+        };    
+    }, [error]);
+
 
 
     const handleUsernameChange = (e) => {
@@ -50,14 +57,6 @@ function Login() {
         setTriggerFetch(true);
         doFetch();
     };
-        
-    //useEffect(() => {
-    //        if (data && !error && triggerFetch) {
-    //            login(data.token);
-    //        }
-    //    }, [data, error, triggerFetch]);
-    
-    //console.log(error);
 
     return (
         <>
