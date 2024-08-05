@@ -35,7 +35,7 @@ function reducer(state, action) {
 function AuthProvider({ children }) {
     const [state, dispatch] = useReducer(reducer, {
         token: localStorage.getItem("authToken"),
-        isAuthenticated: false,
+        isAuthenticated: localStorage.getItem("authToken")? true:false,
     });
     const navigate = useNavigate();
     const location = useLocation();

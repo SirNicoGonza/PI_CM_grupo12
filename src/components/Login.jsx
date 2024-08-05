@@ -106,7 +106,7 @@ function Login() {
                             Iniciar Sesión
                         </button>
                         {isLoading && triggerFetch && (<p>Cargando...</p>)}
-                        { errorMensaje && <p className="error-message">{errorMensaje}</p>}
+                        { errorMensaje && <p className="error-message">contraseña erroneos</p>}
                     </div>
                 </form>
                 <br />
