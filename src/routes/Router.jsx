@@ -1,5 +1,6 @@
 import { createBrowserRouter } from "react-router-dom";
 import Layout from "./Layout";
+import LayoutSinNav from "./LayoutSinNav";
 import ProtectedRoute from "./ProtectedRoute";
 import Login from "../components/Login";
 import NotFound from "../components/NotFound";
@@ -8,7 +9,7 @@ import ArtistsList from "../components/artists/ArtistsList";
 
 const Router = createBrowserRouter([
     {
-        element: <Layout />,
+        element: <LayoutSinNav />,
         children: [
             {
                 index: true,
@@ -17,7 +18,12 @@ const Router = createBrowserRouter([
             {
                 path: "login",
                 element: <Login />
-            },
+            }
+        ]
+    },
+    {
+        element: <Layout />,
+        children: [
             {
                 path:"home",
                 element: <Home />,
