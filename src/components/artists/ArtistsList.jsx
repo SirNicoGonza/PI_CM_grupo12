@@ -1,27 +1,21 @@
 import ArtistsCard from "./ArtistsCard";
 import useFetch from "../../hooks/useFetch";
-import { useEffect } from "react";
+import { useEffect , useCallback} from "react";
 
 //Componente que genera una lista de card con todos los artistas de la api
 function ArtistsList(){
+
     const [{data, isError, isLoading}, doFetch] = useFetch(
         `${import.meta.env.VITE_API_BASE_URL_HARMONY}/artists/`, {}
     );
 
-    useEffect(()=>{
+    const fetchArtist = useCallback(()=> {
         doFetch();
-    }, []);
+    }, [doFetch]);
 
-    useEffect(() => {
-        console.log("Fetching artists...");
-        doFetch();
-    }, []);
-
-    useEffect(() => {
-        console.log("data:", data);
-        console.log("isError:", isError);
-        console.log("isLoading:", isLoading);
-    }, [data, isError, isLoading]);
+    useEffect(() =>{
+        fetchArtist();
+    }, [fetchArtist]);
 
     if(isLoading) return <p>Cargando...</p>;
     if(isError) return  <p>Error al cargar los artistas</p>;

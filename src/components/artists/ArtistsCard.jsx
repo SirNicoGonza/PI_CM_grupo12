@@ -2,8 +2,8 @@
 
 function ArtistsCard({ artists }){
     <div className="card">
-        <div className="card-content">
-            <i className={artists.image}>{artists.image}</i>
+        <div className="card-content" key={artists.id}>
+            <i src={artists.image} className="artists-image" alt={artists.name}/>
             <p className="artists-name">{artists.name}</p>
         </div>
     </div>
