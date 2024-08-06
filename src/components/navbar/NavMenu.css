@@ -1,0 +1,49 @@
+.navbar-manu{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+}
+
+.isActive{
+    color: white;
+    text-decoration: none; 
+    padding: 0.5rem 1rem;
+    margin-right: 1rem;
+}
+
+.isPending{
+    color: white;
+    text-decoration: none; 
+    padding: 0.5rem 1rem;
+    margin-right: 1rem;
+}
+
+.isTransitioning{
+    color: white;
+    text-decoration: none;
+    padding: 0.5rem 1rem;
+    transition: background-color 0.3s ease;
+}
+
+.pending{
+    color: white;
+    text-decoration: none; 
+    padding: 0.5rem 1rem;
+    margin-right: 1rem;
+
+}
+
+.has-text-primary{
+    color: white;
+    text-decoration: none;
+    padding: 0.5rem 1rem; 
+
+}
+
+.transitioning{
+    color: white;
+    text-decoration: none;
+    padding: 0.5rem 1rem;
+    transition: background-color 0.3s ease;
+}

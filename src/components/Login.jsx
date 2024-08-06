@@ -42,8 +42,6 @@ function Login() {
         };    
     }, [error]);
 
-
-
     const handleUsernameChange = (e) => {
         setUsername(e.target.value);
     };
@@ -106,7 +104,7 @@ function Login() {
                             Iniciar Sesión
                         </button>
                         {isLoading && triggerFetch && (<p>Cargando...</p>)}
-                        { errorMensaje && <p className="error-message">contraseña erroneos</p>}
+                        { errorMensaje && (<p className="error-message">{errorMensaje}</p>)}
                     </div>
                 </form>
                 <br />
