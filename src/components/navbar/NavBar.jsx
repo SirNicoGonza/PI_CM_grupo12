@@ -26,6 +26,7 @@ function NavBar({ appName }) {
                         {text:"Home", url:"/home"},
                         {text:"Artist", url:"/artists"},
                         {text:"Albums", url:"/albums"},
+                        {text:"Playlists", url:"playlists"}
                     ]} 
                 />
             </nav>

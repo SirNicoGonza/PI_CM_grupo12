@@ -7,6 +7,7 @@ import NotFound from "../components/NotFound";
 import Home from "../components/Home";
 import ArtistsList from "../components/artists/ArtistsList";
 import AlbumsList from "../components/albums/AlbumsList";
+import Playlists from "../components/playlists/Playlists";
 
 const Router = createBrowserRouter([
     {
@@ -42,6 +43,14 @@ const Router = createBrowserRouter([
                 element: (
                 <ProtectedRoute>
                     <AlbumsList />
+                </ProtectedRoute>
+                ),
+            },
+            {
+                path: "playlists",
+                element: (
+                <ProtectedRoute>
+                    <Playlists />
                 </ProtectedRoute>
                 ),
             },
