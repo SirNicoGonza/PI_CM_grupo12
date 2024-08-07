@@ -7,7 +7,7 @@ function Home(){
         <div>
             <h1>Pagina de Ejemplo</h1>
             <p>Aun falta completar</p>
-            <button onClick={()=> navigate("/artists")}>is a Artistas </button>
+            <button onClick={()=> navigate("/artists")}>ir a Artistas </button>
         </div>
      );
 }
