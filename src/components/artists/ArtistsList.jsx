@@ -9,13 +9,9 @@ function ArtistsList(){
         `${import.meta.env.VITE_API_BASE_URL_HARMONY}/artists/`, {}
     );
 
-    const fetchArtist = useCallback(()=> {
-        doFetch();
-    }, [doFetch]);
-
     useEffect(() =>{
-        fetchArtist();
-    }, [fetchArtist]);
+        doFetch();
+    }, []);
 
     if(isLoading) return <p>Cargando...</p>;
     if(isError) return  <p>Error al cargar los artistas</p>;
