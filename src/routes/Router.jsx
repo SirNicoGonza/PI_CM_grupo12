@@ -6,6 +6,7 @@ import Login from "../components/Login";
 import NotFound from "../components/NotFound";
 import Home from "../components/Home";
 import ArtistsList from "../components/artists/ArtistsList";
+import AlbumsList from "../components/albums/AlbumsList";
 
 const Router = createBrowserRouter([
     {
@@ -33,6 +34,14 @@ const Router = createBrowserRouter([
                 element: (
                 <ProtectedRoute>
                     <ArtistsList />
+                </ProtectedRoute>
+                ),
+            },
+            {
+                path: "albums",
+                element: (
+                <ProtectedRoute>
+                    <AlbumsList />
                 </ProtectedRoute>
                 ),
             },

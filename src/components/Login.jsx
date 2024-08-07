@@ -59,6 +59,7 @@ function Login() {
     return (
         <>
             <h1 id="maintitle">Poné Play</h1>
+            <br />
             <div id="container-login">
                 <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
                 <div id="title">
