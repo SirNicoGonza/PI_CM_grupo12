@@ -1,15 +1,17 @@
 import React from 'react';
 
-function PlaylistsCard({ playlist }) {
+function PlaylistCard({ playlist }) {
+    const imageUrl = playlist.image || 'src/assets/music.png';
+
     return (
         <div className="card">
             <div className="card-content">
+                <img src={imageUrl} alt={`${playlist.name} cover`} style={{ width: '50px', height: '50px' }} />
                 <p className="title">{playlist.name}</p>
                 <p className="subtitle">{playlist.description}</p>
-                {/* Agrega más detalles según sea necesario */}
             </div>
         </div>
     );
 }
 
-export default PlaylistsCard;
+export default PlaylistCard;
