@@ -6,6 +6,7 @@ import Login from "../components/Login";
 import NotFound from "../components/NotFound";
 import Home from "../components/Home";
 import ArtistsList from "../components/artists/ArtistsList";
+import Profile from "../components/profile/Profile";
 import AlbumsList from "../components/albums/AlbumsList";
 import Playlists from "../components/playlists/Playlists";
 import SongsLists from "../components/songs/SongsList";
@@ -71,6 +72,28 @@ const Router = createBrowserRouter([
                     <SongsLists />
                 </ProtectedRoute>
                 ),
+            },
+            {
+                path: "profile",
+                children:[
+                    {
+                        index: true,
+                        element: (
+                            <ProtectedRoute>
+                                <Profile />
+                            </ProtectedRoute>
+                        )
+                    },
+                    {
+                        path:":id",
+                        element: (
+                            <ProtectedRoute>
+                                <Profile />
+                            </ProtectedRoute>
+                        )
+                    }
+
+                ],
             },
             // Aqui poner las rutas que falten
         ],
