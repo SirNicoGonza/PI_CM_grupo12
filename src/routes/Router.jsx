@@ -8,6 +8,8 @@ import Home from "../components/Home";
 import ArtistsList from "../components/artists/ArtistsList";
 import AlbumsList from "../components/albums/AlbumsList";
 import Playlists from "../components/playlists/Playlists";
+import SongsLists from "../components/songs/SongsList";
+import ArtistIdDetail from "../components/artists/ArtistIdDetail";
 
 const Router = createBrowserRouter([
     {
@@ -39,6 +41,14 @@ const Router = createBrowserRouter([
                 ),
             },
             {
+                path: "artists/:id",
+                element: (
+                <ProtectedRoute>
+                    <ArtistIdDetail />
+                </ProtectedRoute>
+                ),
+            },
+            {
                 path: "albums",
                 element: (
                 <ProtectedRoute>
@@ -51,6 +61,14 @@ const Router = createBrowserRouter([
                 element: (
                 <ProtectedRoute>
                     <Playlists />
+                </ProtectedRoute>
+                ),
+            },
+            {
+                path: "songs",
+                element: (
+                <ProtectedRoute>
+                    <SongsLists />
                 </ProtectedRoute>
                 ),
             },
