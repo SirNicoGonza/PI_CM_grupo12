@@ -1,16 +1,16 @@
-import ArtistsCard from "./ArtistsCard";
+import SongsCard from "./SongsCard";
 import useFetch from "../../hooks/useFetch";
 import React, { useEffect, useState } from 'react';
 
 // Componente que genera una lista de card con todas las canciones de la API
-function ArtistsList() {
-    const [artists, setArtists] = useState([]);
+function SongsList() {
+    const [songs, setSongs] = useState([]);
     const [currentPage, setCurrentPage] = useState(1); // Página actual
     const [totalPages, setTotalPages] = useState(0); // Total de páginas
-    const artistsPerPage = 5; // Cantidad de artistas por página
+    const songsPerPage = 5; // Cantidad de canciones por página
 
     // Generar la URL de la API para la página actual
-    const nextUrl = `${import.meta.env.VITE_API_BASE_URL_HARMONY}/artists/?page=${currentPage}&page_size=${artistsPerPage}`;
+    const nextUrl = `${import.meta.env.VITE_API_BASE_URL_HARMONY}/songs/?page=${currentPage}&page_size=${songsPerPage}`;
 
     const [{ data, isError, isLoading }, doFetch] = useFetch(nextUrl, {});
 
@@ -20,8 +20,8 @@ function ArtistsList() {
 
     useEffect(() => {
         if (data) {
-            setArtists(data.results);
-            setTotalPages(Math.ceil(data.count / artistsPerPage)); // Calcula el total de artistas
+            setSongs(data.results);
+            setTotalPages(Math.ceil(data.count / songsPerPage)); // Calcula el total de páginas
         }
     }, [data]);
 
@@ -37,18 +37,18 @@ function ArtistsList() {
         }
     };
 
-    if (isLoading && artists.length === 0) return <p>Cargando...</p>;
+    if (isLoading && songs.length === 0) return <p>Cargando...</p>;
     if (isError) return <p>Error al cargar las canciones</p>;
-    if (artists.length === 0) return <p>No hay canciones disponibles</p>;
+    if (songs.length === 0) return <p>No hay canciones disponibles</p>;
 
     return (
         <div>
             <div className="my-5">
                 <h2 className="title">Lista de Canciones</h2>
                 <ul>
-                    {artists.map(artista => (
-                        <div key={artista.id} className="column is-two-third">
-                            <ArtistsCard artist={artista} />
+                    {songs.map(song => (
+                        <div key={song.id} className="column is-two-third">
+                            <SongsCard songss={song} />
                         </div>
                     ))}
                 </ul>
@@ -66,4 +66,4 @@ function ArtistsList() {
     );
 }
 
-export default ArtistsList;
+export default SongsList;

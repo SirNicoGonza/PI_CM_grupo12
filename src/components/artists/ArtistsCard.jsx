@@ -1,14 +1,29 @@
 // Componente que genera un elemento card con la info de un artista
 
-function ArtistsCard({ artists }){
+import { useNavigate } from "react-router-dom";
+
+function ArtistsCard({ artist }){
+    const imageStyle = {
+        backgroundImage: `url(${artist.image})`,
+        backgroundSize: 'cover',
+        width: '50px',
+        height: '50px',
+        display: 'block',
+    };
+    const navigate = useNavigate();
+    const handleCardClick = () => {
+        navigate(`/artists/${artist.id}`)
+    }
+
     return (
-        <div className="card">
-            <div className="card-content" key={artists.id}>
-                <i src={artists.image} className="artists-image" alt={artists.name}/>
-                <p className="artists-name">{artists.name}</p>
+        <div className="card" onClick={handleCardClick}>
+            <div className="card-content">
+                {/*<i className={artists.image}>{artists.image}</i>*/}
+                <i style={imageStyle}></i>
+                <p className="artists-name">{artist.name}</p>
             </div>
         </div>
-    )
+    );
 };
 
 export default ArtistsCard;
