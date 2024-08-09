@@ -39,11 +39,25 @@ const Router = createBrowserRouter([
             },
             {
                 path: "profile",
-                element: (
-                    <ProtectedRoute>
-                        <Profile />
-                    </ProtectedRoute>
-                )
+                children:[
+                    {
+                        index: true,
+                        element: (
+                            <ProtectedRoute>
+                                <Profile />
+                            </ProtectedRoute>
+                        )
+                    },
+                    {
+                        path:":id",
+                        element: (
+                            <ProtectedRoute>
+                                <Profile />
+                            </ProtectedRoute>
+                        )
+                    }
+
+                ],
             },
             // Aqui poner las rutas que falten
         ],
