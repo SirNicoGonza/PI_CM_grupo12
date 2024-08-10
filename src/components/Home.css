@@ -1,0 +1,19 @@
+.title {
+	padding: 20px;
+}
+
+.parrafo {
+	padding: 10px;
+}
+
+.grid-container {
+	display: grid;
+	grid-template-columns: repeat(3, 1fr);
+	gap: 10px;
+}
+
+.song-card-container {
+	background-color: #080808;
+	padding: 2px;
+	border-radius: 6px;
+}
