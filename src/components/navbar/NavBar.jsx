@@ -24,11 +24,11 @@ function NavBar({ appName }) {
                 <NavMenu
                     items={[
                         {text:"Home", url:"/home"},
-                        {text:"Artist", url:"/artists"},
-                        {text:"Profile", url:"/profile"},
+                        {text:"Artist", url:"/artists"},                        
                         {text:"Albums", url:"/albums"},
                         {text:"Playlists", url:"playlists"},
-                        {text:"Songs", url:"/songs"}
+                        {text:"Songs", url:"/songs"},
+                        {text:"Profile", url:"/profile"},
                     ]} 
                 />
             </nav>
