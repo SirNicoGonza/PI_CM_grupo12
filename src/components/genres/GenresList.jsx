@@ -1,19 +1,18 @@
-import ArtistsCard from "./ArtistsCard";
+import GenresCard from "./GenresCard";
 import useFetch from "../../hooks/useFetch";
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
-
-// Componente que genera una lista de card con todas las canciones de la API
-function ArtistsList() {
-    const [artists, setArtists] = useState([]);
+// Componente que genera una lista de card con todos los generos de la API
+function GenresList() {
+    const [genres, setGenres] = useState([]);
     const [currentPage, setCurrentPage] = useState(1); // Página actual
     const [totalPages, setTotalPages] = useState(0); // Total de páginas
-    const artistsPerPage = 5; // Cantidad de artistas por página
+    const genresPerPage = 5; // Cantidad de generos por página
     const navigate = useNavigate();
 
     // Generar la URL de la API para la página actual
-    const nextUrl = `${import.meta.env.VITE_API_BASE_URL_HARMONY}/artists/?page=${currentPage}&page_size=${artistsPerPage}`;
+    const nextUrl = `${import.meta.env.VITE_API_BASE_URL_HARMONY}/genres/?page=${currentPage}&page_size=${genresPerPage}`;
 
     const [{ data, isError, isLoading }, doFetch] = useFetch(nextUrl, {});
 
@@ -23,8 +22,8 @@ function ArtistsList() {
 
     useEffect(() => {
         if (data) {
-            setArtists(data.results);
-            setTotalPages(Math.ceil(data.count / artistsPerPage)); // Calcula el total de artistas
+            setGenres(data.results);
+            setTotalPages(Math.ceil(data.count / genresPerPage)); // Calcula el total de páginas
         }
     }, [data]);
 
@@ -40,22 +39,22 @@ function ArtistsList() {
         }
     };
 
-    const handleNewArtist = () => {
-        navigate('/artists/new')
+    const handleNewGenre = () => {
+        navigate('/genres/new')
     }
 
-    if (isLoading && artists.length === 0) return <p>Cargando...</p>;
-    if (isError) return <p>Error al cargar las canciones</p>;
-    if (artists.length === 0) return <p>No hay canciones disponibles</p>;
+    if (isLoading && genres.length === 0) return <p>Cargando...</p>;
+    if (isError) return <p>Error al cargar los generos</p>;
+    if (genres.length === 0) return <p>No hay generos disponibles</p>;
 
     return (
         <div>
             <div className="my-5">
-                <h2 className="title">Lista de Canciones</h2>
+                <h2 className="title">Lista de Generos</h2>
                 <ul>
-                    {artists.map(artista => (
-                        <div key={artista.id} className="column is-two-third">
-                            <ArtistsCard artist={artista} />
+                    {genres.map(genre => (
+                        <div key={genre.id} className="column is-two-third">
+                            <GenresCard genress={genre} />
                         </div>
                     ))}
                 </ul>
@@ -67,8 +66,8 @@ function ArtistsList() {
                     <button onClick={handleNextPage} disabled={currentPage === totalPages}>
                         Siguiente
                     </button>
-                    <button onClick={handleNewArtist}>
-                        Nuevo Artista
+                    <button onClick={handleNewGenre}>
+                        Nuevo Genero
                     </button>
                 </div>
             </div>
@@ -76,4 +75,4 @@ function ArtistsList() {
     );
 }
 
-export default ArtistsList;
+export default GenresList;
