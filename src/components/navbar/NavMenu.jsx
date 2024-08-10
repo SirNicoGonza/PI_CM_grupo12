@@ -9,10 +9,10 @@ function NavMenu({ items }){
                     <NavLink
                         key={index}
                         to={item.url}
-                        className={({ isActive, isPending, isTransitioning }) =>
+                        activeclassName={({ isActive, isPending, isTransitioning }) =>
                             [
                                 isPending ? "pending" : "",
-                                isActive ? "has-text-primary" : "",
+                                isActive ? "active" : "",
                                 isTransitioning ? "transitioning" : "",
                             ].join("navbar-item")
                         }
