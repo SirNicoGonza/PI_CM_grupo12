@@ -7,6 +7,7 @@ import NotFound from "../components/NotFound";
 import Home from "../components/Home";
 import ArtistsList from "../components/artists/ArtistsList";
 import Profile from "../components/profile/Profile";
+import GenresList from "../components/genres/GenresList";
 import AlbumsList from "../components/albums/AlbumsList";
 import Playlists from "../components/playlists/Playlists";
 import SongsLists from "../components/songs/SongsList";
@@ -138,6 +139,27 @@ const Router = createBrowserRouter([
                         )
                     }
 
+                ],
+            },
+            {
+                path:"genres",
+                children: [
+                    {
+                        index: true,
+                        element: (
+                            <ProtectedRoute>
+                                <GenresList />
+                            </ProtectedRoute>
+                        )
+                    },
+                    {
+                        path:"id",
+                        element: (
+                            <ProtectedRoute>
+                                <GenresList />
+                            </ProtectedRoute>
+                        )
+                    }
                 ],
             },
             // Aqui poner las rutas que falten

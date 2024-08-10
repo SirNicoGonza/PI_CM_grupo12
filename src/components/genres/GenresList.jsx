@@ -3,7 +3,7 @@ import useFetch from "../../hooks/useFetch";
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
-// Componente que genera una lista de card con todos los generos de la API
+// Componente que genera una lista de card con todas las canciones de la API
 function GenresList() {
     const [genres, setGenres] = useState([]);
     const [currentPage, setCurrentPage] = useState(1); // Página actual
@@ -46,6 +46,7 @@ function GenresList() {
     if (isLoading && genres.length === 0) return <p>Cargando...</p>;
     if (isError) return <p>Error al cargar los generos</p>;
     if (genres.length === 0) return <p>No hay generos disponibles</p>;
+
 
     return (
         <div>
