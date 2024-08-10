@@ -28,6 +28,7 @@ function NavBar({ appName }) {
                         {text:"Albums", url:"/albums"},
                         {text:"Playlists", url:"playlists"},
                         {text:"Songs", url:"/songs"},
+                        {text:"Genres", url:"/genres"},
                         {text:"Profile", url:"/profile"},
                     ]} 
                 />
