@@ -25,7 +25,7 @@ function ArtistIdDetail() {
     return (
         <div>
             <h2>{artist.name}</h2>
-            <img src={artist.image} alt={artist.name} />
+            <img src={artist.image} alt={artist.name} style={{ width: '300px', height: '300px' }} />
             <p>{artist.bio}</p>
             <p>{artist.website}</p>
             <button onClick={()=> navigate("/artists")}>Volver</button>

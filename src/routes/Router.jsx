@@ -12,6 +12,11 @@ import AlbumsList from "../components/albums/AlbumsList";
 import Playlists from "../components/playlists/Playlists";
 import SongsLists from "../components/songs/SongsList";
 import ArtistIdDetail from "../components/artists/ArtistIdDetail";
+import ArtistNew from "../components/artists/ArtistNew";
+import PlaylistDetail from "../components/playlists/PlaylistDetail";
+import GenresLists from "../components/genres/GenresList";
+import GenresDetail from "../components/genres/GenresDetail";
+import GenreNew from "../components/genres/GenreNew";
 
 const Router = createBrowserRouter([
     {
@@ -51,6 +56,14 @@ const Router = createBrowserRouter([
                 ),
             },
             {
+                path: "artists/new",
+                element: (
+                <ProtectedRoute>
+                    <ArtistNew />
+                </ProtectedRoute>
+                ),
+            },
+            {
                 path: "albums",
                 element: (
                 <ProtectedRoute>
@@ -63,6 +76,38 @@ const Router = createBrowserRouter([
                 element: (
                 <ProtectedRoute>
                     <Playlists />
+                </ProtectedRoute>
+                ),
+            },
+            {
+                path: "playlists/:id",
+                element: (
+                <ProtectedRoute>
+                    <PlaylistDetail />
+                </ProtectedRoute>
+                ),
+            },
+            {
+                path: "genres",
+                element: (
+                <ProtectedRoute>
+                    <GenresLists />
+                </ProtectedRoute>
+                ),
+            },
+            {
+                path: "genres/:id",
+                element: (
+                <ProtectedRoute>
+                    <GenresDetail />
+                </ProtectedRoute>
+                ),
+            },
+            {
+                path: "genres/new",
+                element: (
+                <ProtectedRoute>
+                    <GenreNew />
                 </ProtectedRoute>
                 ),
             },
