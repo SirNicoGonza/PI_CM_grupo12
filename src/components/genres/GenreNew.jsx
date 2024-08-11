@@ -48,8 +48,10 @@ function GenreNew() {
             <h2>Crear Nuevo Genero</h2>
             <form onSubmit={handleSubmit}>
                 <div>
-                    <label>Nombre del Genero:</label>
+                    <label htmlFor="genre-name">Nombre del Genero:</label>
                     <input
+                        id="genre-name"
+                        name="genre-name"
                         type="text"
                         value={name}
                         onChange={(e) => setName(e.target.value)}
@@ -57,8 +59,10 @@ function GenreNew() {
                     />
                 </div>
                 <div>
-                    <label>Descripcion del Genero:</label>
+                    <label htmlFor="genre-description">Descripcion del Genero:</label>
                     <textarea
+                        id="genre-description"
+                        name="genre-description"
                         value={description}
                         onChange={(e) => setDescription(e.target.value)}
                     />
@@ -67,7 +71,7 @@ function GenreNew() {
                     {isSubmitting ? 'Enviando...' : 'Crear Genero'}
                 </button>
             </form>
-            <button onClick={()=> navigate("/genres")}>Volver</button>
+            <button onClick={() => navigate("/genres")}>Volver</button>
             {error && <p style={{ color: 'red' }}>{error}</p>}
             {successMessage && <p style={{ color: 'green' }}>{successMessage}</p>}
         </div>

@@ -11,7 +11,7 @@ function PlaylistCard({ playlist }) {
     return (
         <div className="card" onClick={handlePlaylistClick}>
             <div className="card-content">
-                <img src={imageUrl} alt={`${playlist.name} cover`} style={{ width: '50px', height: '50px' }} />
+                <img src={imageUrl} alt={`${playlist.name} cover`} style={{ width: '60px', height: '60px' }} />
                 <p className="title">{playlist.name}</p>
                 <p className="subtitle">{playlist.description}</p>
                 <p className='cantSongs'>Cantidad de canciones: {playlist.entries.length}</p>

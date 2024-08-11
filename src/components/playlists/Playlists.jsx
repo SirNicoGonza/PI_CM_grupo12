@@ -1,6 +1,7 @@
 import PlaylistsCard from './PlaylistsCard';
 import useFetch from '../../hooks/useFetch';
 import React, { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import './Playlists.css';
 
 function Playlists() {
@@ -9,6 +10,7 @@ function Playlists() {
 	const [totalPages, setTotalPages] = useState(0);
 	const [searchTerm, setSearchTerm] = useState('');
 	const playlistsPerPage = 10;
+	const navigate = useNavigate();
 
 	const nextUrl = `${
 		import.meta.env.VITE_API_BASE_URL_HARMONY
@@ -17,8 +19,11 @@ function Playlists() {
 	const [{ data, isError, isLoading }, doFetch] = useFetch(nextUrl, {});
 
 	useEffect(() => {
-		doFetch();
-	}, [nextUrl]);
+		const url = `${
+			import.meta.env.VITE_API_BASE_URL_HARMONY
+		}/playlists/?page=${currentPage}&page_size=${playlistsPerPage}`;
+		doFetch(url);
+	}, [currentPage]);
 
 	useEffect(() => {
 		if (data) {
@@ -39,6 +44,10 @@ function Playlists() {
 		}
 	};
 
+	const handleNewPlaylist = () => {
+		navigate('/playlists/new');
+	};
+
 	const filteredPlaylists = playlists.filter((playlist) =>
 		playlist.name.toLowerCase().includes(searchTerm.toLowerCase())
 	);
@@ -50,7 +59,7 @@ function Playlists() {
 
 	return (
 		<div className='playlists-container'>
-			<div className='my-5'>
+			<div>
 				<h2 className='title'>Lista de Reproducción</h2>
 
 				<div className='search-input-container'>
@@ -60,8 +69,17 @@ function Playlists() {
 						value={searchTerm}
 						onChange={(e) => setSearchTerm(e.target.value)}
 						className='search-input'
+						id='searchPlaylist'
+						name='searchPlaylist'
 					/>
 				</div>
+
+				<button
+					onClick={handleNewPlaylist}
+					className='new-playlist-button'
+				>
+					+ Crear nueva Lista
+				</button>
 
 				<ul>
 					{filteredPlaylists.map((playlist) => (
