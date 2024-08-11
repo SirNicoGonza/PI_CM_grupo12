@@ -9,7 +9,7 @@ function ArtistsList() {
     const [artists, setArtists] = useState([]);
     const [currentPage, setCurrentPage] = useState(1); // Página actual
     const [totalPages, setTotalPages] = useState(0); // Total de páginas
-    const artistsPerPage = 5; // Cantidad de artistas por página
+    const artistsPerPage = 8; // Cantidad de artistas por página
     const navigate = useNavigate();
 
     // Generar la URL de la API para la página actual
