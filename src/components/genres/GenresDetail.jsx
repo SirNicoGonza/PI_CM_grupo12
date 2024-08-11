@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import useFetch from '../../hooks/useFetch';
 import SongsCard from '../songs/SongsCard';
+import "../genres/GenresDetail.css";
 
 function GenresDetail() {
     const { id } = useParams();
@@ -46,23 +47,25 @@ function GenresDetail() {
     if (!genre) return <p>No se encontraron detalles del genero</p>;
 
     return (
-        <div>
-            <h2>{genre.name}</h2>
-            <h3>Canciones de esta genero:</h3>
-            {isFetchingSongs ? (
-                <p>Cargando canciones...</p>
-            ) : (
-                <div className="songs-list">
-                    {songs.length > 0 ? (
-                        songs.map(song => (
-                            <SongsCard key={song.id} songss={song} />
-                        ))
-                    ) : (
-                        <p>No hay canciones para este genero.</p>
-                    )}
-                </div>
-            )}
-            <button onClick={()=> navigate("/genres")}>Volver</button>
+        <div className='detail'>
+            <div className='card'>
+                <h2 className='title'>{genre.name}</h2>
+                <h3 className='subtitle'>Canciones de esta genero:</h3>
+                {isFetchingSongs ? (
+                    <p>Cargando canciones...</p>
+                ) : (
+                    <div className="songs-list">
+                        {songs.length > 0 ? (
+                            songs.map(song => (
+                                <SongsCard key={song.id} songss={song} />
+                            ))
+                        ) : (
+                            <p>No hay canciones para este genero.</p>
+                        )}
+                    </div>
+                )}
+                <button onClick={()=> navigate("/genres")}>Volver</button>
+            </div>
         </div>
     );
 }
