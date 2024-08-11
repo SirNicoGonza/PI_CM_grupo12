@@ -1,49 +1,25 @@
-.navbar-manu{
+.navbar-menu {
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 10px;
 }
 
-.isActive{
+.navbar-item {
     color: white;
-    text-decoration: none; 
+    text-decoration: none;
     padding: 0.5rem 1rem;
     margin-right: 1rem;
 }
 
-.isPending{
-    color: white;
-    text-decoration: none; 
-    padding: 0.5rem 1rem;
-    margin-right: 1rem;
+.active {
+    background-color: #007BFF; /* Cambia este color según tu tema */
 }
 
-.isTransitioning{
-    color: white;
-    text-decoration: none;
-    padding: 0.5rem 1rem;
-    transition: background-color 0.3s ease;
+.pending {
+    color: grey; /* Muestra un color diferente cuando la ruta está pendiente */
 }
 
-.pending{
-    color: white;
-    text-decoration: none; 
-    padding: 0.5rem 1rem;
-    margin-right: 1rem;
-
-}
-
-.has-text-primary{
-    color: white;
-    text-decoration: none;
-    padding: 0.5rem 1rem; 
-
-}
-
-.transitioning{
-    color: white;
-    text-decoration: none;
-    padding: 0.5rem 1rem;
+.transitioning {
     transition: background-color 0.3s ease;
 }
