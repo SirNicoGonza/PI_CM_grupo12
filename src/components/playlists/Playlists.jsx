@@ -1,6 +1,7 @@
 import PlaylistsCard from './PlaylistsCard';
 import useFetch from '../../hooks/useFetch';
 import React, { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import './Playlists.css';
 
 function Playlists() {
@@ -9,6 +10,7 @@ function Playlists() {
 	const [totalPages, setTotalPages] = useState(0);
 	const [searchTerm, setSearchTerm] = useState('');
 	const playlistsPerPage = 10;
+	const navigate = useNavigate();
 
 	const nextUrl = `${
 		import.meta.env.VITE_API_BASE_URL_HARMONY
@@ -17,8 +19,11 @@ function Playlists() {
 	const [{ data, isError, isLoading }, doFetch] = useFetch(nextUrl, {});
 
 	useEffect(() => {
-		doFetch();
-	}, [nextUrl]);
+		const url = `${
+			import.meta.env.VITE_API_BASE_URL_HARMONY
+		}/playlists/?page=${currentPage}&page_size=${playlistsPerPage}`;
+		doFetch(url);
+	}, [currentPage]);
 
 	useEffect(() => {
 		if (data) {
@@ -37,6 +42,15 @@ function Playlists() {
 		if (currentPage > 1) {
 			setCurrentPage((prevPage) => prevPage - 1);
 		}
+	};
+
+	const handleNewPlaylist = () => {
+		navigate('/playlists/new'); // Navigates to the PlaylistNew component
+	};
+
+	const handlePlaylistCreated = (newPlaylist) => {
+		// Insert the new playlist at the beginning of the list
+		setPlaylists((prevPlaylists) => [newPlaylist, ...prevPlaylists]);
 	};
 
 	const filteredPlaylists = playlists.filter((playlist) =>
@@ -62,6 +76,13 @@ function Playlists() {
 						className='search-input'
 					/>
 				</div>
+
+				<button
+					onClick={handleNewPlaylist}
+					className='new-playlist-button'
+				>
+					+ Crear nueva Lista
+				</button>
 
 				<ul>
 					{filteredPlaylists.map((playlist) => (
