@@ -74,6 +74,8 @@ function Playlists() {
 						value={searchTerm}
 						onChange={(e) => setSearchTerm(e.target.value)}
 						className='search-input'
+						id='searchPlaylist'
+						name='searchPlaylist'
 					/>
 				</div>
 
