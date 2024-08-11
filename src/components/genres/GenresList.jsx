@@ -2,6 +2,7 @@ import GenresCard from "./GenresCard";
 import useFetch from "../../hooks/useFetch";
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import "../genres/GenresList.css";
 
 // Componente que genera una lista de card con todas las canciones de la API
 function GenresList() {
@@ -50,11 +51,11 @@ function GenresList() {
 
     return (
         <div>
-            <div className="my-5">
+            <div className="mainList">
                 <h2 className="title">Lista de Generos</h2>
-                <ul>
+                <ul className="genresGrids">
                     {genres.map(genre => (
-                        <div key={genre.id} className="column is-two-third">
+                        <div key={genre.id} className="column">
                             <GenresCard genress={genre} />
                         </div>
                     ))}
@@ -63,7 +64,7 @@ function GenresList() {
                     <button onClick={handlePreviousPage} disabled={currentPage === 1}>
                         Anterior
                     </button>
-                    <span>Página {currentPage} de {totalPages}</span>
+                    <span className="page-number">Página {currentPage} de {totalPages}</span>
                     <button onClick={handleNextPage} disabled={currentPage === totalPages}>
                         Siguiente
                     </button>
