@@ -11,6 +11,7 @@ import GenresList from "../components/genres/GenresList";
 import AlbumsList from "../components/albums/AlbumsList";
 import Playlists from "../components/playlists/Playlists";
 import SongsLists from "../components/songs/SongsList";
+import SongNew from "../components/songs/SongNew";
 import ArtistIdDetail from "../components/artists/ArtistIdDetail";
 import ArtistNew from "../components/artists/ArtistNew";
 import PlaylistDetail from "../components/playlists/PlaylistDetail";
@@ -118,6 +119,14 @@ const Router = createBrowserRouter([
                     <SongsLists />
                 </ProtectedRoute>
                 ),
+            },
+            {
+                path: "songs/new",
+                element: (
+                    <ProtectedRoute>
+                        <SongNew />
+                    </ProtectedRoute>
+                )
             },
             {
                 path: "profile",
