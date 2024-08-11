@@ -59,7 +59,7 @@ function Playlists() {
 
 	return (
 		<div className='playlists-container'>
-			<div className='my-5'>
+			<div>
 				<h2 className='title'>Lista de Reproducción</h2>
 
 				<div className='search-input-container'>
