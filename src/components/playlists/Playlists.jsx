@@ -45,12 +45,7 @@ function Playlists() {
 	};
 
 	const handleNewPlaylist = () => {
-		navigate('/playlists/new'); // Navigates to the PlaylistNew component
-	};
-
-	const handlePlaylistCreated = (newPlaylist) => {
-		// Insert the new playlist at the beginning of the list
-		setPlaylists((prevPlaylists) => [newPlaylist, ...prevPlaylists]);
+		navigate('/playlists/new');
 	};
 
 	const filteredPlaylists = playlists.filter((playlist) =>

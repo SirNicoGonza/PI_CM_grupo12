@@ -58,18 +58,22 @@ function PlaylistNew({ onPlaylistCreated }) {
 			<h2>Nueva lista de Reproducción</h2>
 			<form onSubmit={handleSubmit}>
 				<div>
-					<label>Nombre:</label>
+					<label htmlFor='playlistName'>Nombre:</label>
 					<input
 						type='text'
+						id='playlistName'
+						name='playlistName'
 						value={name}
 						onChange={(e) => setName(e.target.value)}
 						required
 					/>
 				</div>
 				<div>
-					<label>Descripción:</label>
+					<label htmlFor='playlistDescription'>Descripción:</label>
 					<input
 						type='text'
+						id='playlistDescription'
+						name='playlistDescription'
 						value={description}
 						onChange={(e) => setDescription(e.target.value)}
 						required
