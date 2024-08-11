@@ -1,6 +1,7 @@
 import SongsCard from "./SongsCard";
 import useFetch from "../../hooks/useFetch";
 import React, { useEffect, useState } from 'react';
+import { useNavigate } from "react-router-dom";
 
 // Componente que genera una lista de card con todas las canciones de la API
 function SongsList() {
@@ -8,6 +9,7 @@ function SongsList() {
     const [currentPage, setCurrentPage] = useState(1); // Página actual
     const [totalPages, setTotalPages] = useState(0); // Total de páginas
     const songsPerPage = 5; // Cantidad de canciones por página
+    const navigate = useNavigate();
 
     // Generar la URL de la API para la página actual
     const nextUrl = `${import.meta.env.VITE_API_BASE_URL_HARMONY}/songs/?page=${currentPage}&page_size=${songsPerPage}`;
@@ -37,6 +39,10 @@ function SongsList() {
         }
     };
 
+    const handleNewSong = () => {
+        navigate('/songs/new')
+    }
+
     if (isLoading && songs.length === 0) return <p>Cargando...</p>;
     if (isError) return <p>Error al cargar las canciones</p>;
     if (songs.length === 0) return <p>No hay canciones disponibles</p>;
@@ -45,6 +51,7 @@ function SongsList() {
         <div>
             <div className="my-5">
                 <h2 className="title">Lista de Canciones</h2>
+                <button onClick={handleNewSong}>Nueva Cancion</button>
                 <ul>
                     {songs.map(song => (
                         <div key={song.id} className="column is-two-third">

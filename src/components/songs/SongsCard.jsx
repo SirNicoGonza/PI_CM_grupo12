@@ -1,4 +1,5 @@
 // Componente que genera un elemento card con la info de una cancion
+import "../songs/SongsCard.css";
 
 function SongsCard({ songss }) {
     const imageStyle = {
