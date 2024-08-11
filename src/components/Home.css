@@ -4,12 +4,14 @@
 
 .parrafo {
 	padding: 10px;
+	font-size: 1.2rem;
 }
 
 .grid-container {
 	display: grid;
 	grid-template-columns: repeat(3, 1fr);
 	gap: 10px;
+	font-size: medium;
 }
 
 .song-card-container {
