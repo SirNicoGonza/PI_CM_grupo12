@@ -1,7 +1,7 @@
 import  { useState, useEffect } from "react";
-import useFetch from "../../hooks/useFetch";
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "../../contexts/AuthContext";
+import "../songs/SongNew.css";
 
 // Componente que permite subir una cancion
 function SongNew(){
@@ -86,7 +86,7 @@ function SongNew(){
 
     }
     return (
-        <div>
+        <div className="song-new-container">
             <h2>Nueva Cancion</h2>
             <form onSubmit={handleSubmit}>
                 <div>

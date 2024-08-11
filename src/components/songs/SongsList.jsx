@@ -2,6 +2,7 @@ import SongsCard from "./SongsCard";
 import useFetch from "../../hooks/useFetch";
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from "react-router-dom";
+import "../songs/SongsList.css";
 
 // Componente que genera una lista de card con todas las canciones de la API
 function SongsList() {
@@ -51,7 +52,7 @@ function SongsList() {
         <div>
             <div className="my-5">
                 <h2 className="title">Lista de Canciones</h2>
-                <button onClick={handleNewSong}>Nueva Cancion</button>
+                <button className="new-songs-button" onClick={handleNewSong}>Nueva Cancion</button>
                 <ul>
                     {songs.map(song => (
                         <div key={song.id} className="column is-two-third">
