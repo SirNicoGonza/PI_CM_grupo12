@@ -5,7 +5,7 @@ import useFetch from '../../hooks/useFetch';
 import './ArtistNew.css';
 
 function ArtistEdit() {
-    const { token } = useAuth('state');
+    const { token } = useAuth("state");
     const { id } = useParams(); // Obtén el id del artista desde los parámetros de la URL
     const navigate = useNavigate();
     const [name, setName] = useState('');
@@ -14,7 +14,7 @@ function ArtistEdit() {
     const [error, setError] = useState(null);
     const [isSubmitting, setIsSubmitting] = useState(false);
     const [successMessage, setSuccessMessage] = useState('');
-    
+
     // Usamos useFetch para obtener los datos del artista
     const [{ data: artistData, isError: fetchError, isLoading: fetchLoading }, doFetch] = useFetch(`${import.meta.env.VITE_API_BASE_URL_HARMONY}/artists/${id}/`, {
         headers: {
@@ -22,24 +22,15 @@ function ArtistEdit() {
         }
     });
 
-    // Usamos useFetch para hacer PATCH
-    const [{ isLoading: patchLoading, isError: patchError }, doPatch] = useFetch(`${import.meta.env.VITE_API_BASE_URL_HARMONY}/artists/${id}/`, {
-        method: 'PATCH',
-        headers: {
-            'Content-Type': 'application/json',
-            Authorization: `Token ${token}`,
-        },
-    });
-
     useEffect(() => {
         doFetch();
-    }, [id, doFetch]);
+    }, [id]);
 
     useEffect(() => {
         if (artistData) {
-            setName(artistData.name);
-            setBio(artistData.bio);
-            setWebsite(artistData.website);
+            setName(artistData.name || ''); 
+            setBio(artistData.bio || '');   
+            setWebsite(artistData.website || '');
         }
     }, [artistData]);
 
@@ -48,7 +39,12 @@ function ArtistEdit() {
         setIsSubmitting(true);
 
         try {
-            const response = await doPatch({
+            const response = await fetch(`${import.meta.env.VITE_API_BASE_URL_HARMONY}/artists/${id}/`, {
+                method: 'PATCH',
+                headers: {
+                    'Content-Type': 'application/json',
+                    Authorization: `Token ${token}`,
+                },
                 body: JSON.stringify({
                     name: name,
                     bio: bio,
@@ -56,11 +52,11 @@ function ArtistEdit() {
                 }),
             });
 
-            if (response.isError) {
+            if (!response.ok) {
                 throw new Error('Error al actualizar el artista');
             }
 
-            const data = response.data;
+            const data = await response.json();
             setSuccessMessage(`Artista ${data.name} actualizado con éxito.`);
         } catch (error) {
             setError(error.message);
