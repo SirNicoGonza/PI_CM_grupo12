@@ -55,7 +55,7 @@ function PlaylistNew({ onPlaylistCreated }) {
 
 	return (
 		<div className='playlist-new-container'>
-			<h2>Nueva lista de Reproducción223</h2>
+			<h2>Nueva lista de Reproducción</h2>
 			<form onSubmit={handleSubmit}>
 				<div>
 					<label htmlFor='playlistName'>Nombre:</label>
