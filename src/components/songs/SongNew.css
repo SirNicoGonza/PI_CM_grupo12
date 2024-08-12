@@ -86,3 +86,7 @@
 .new-song-button:hover {
 	background-color: #0056b3;
 }
+
+.song-new-container option {
+	border-color: #007bff;
+}

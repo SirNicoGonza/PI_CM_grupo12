@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import useFetch from "../../hooks/useFetch";
 import { useAuth } from "../../contexts/AuthContext";
+import imagen from "../../assets/undraw_cat_epte.svg";
 import "../profile/Profile.css";
 
 // Componente que genera el Perfil del Usuario.
@@ -112,7 +113,7 @@ function Profile() {
                                 <figure className="circular-form">
                                     <img 
                                         src={data.image || 
-                                            "src/assets/undraw_cat_epte.svg"
+                                            imagen
                                         } 
                                         alt="Profile image"
                                     />
