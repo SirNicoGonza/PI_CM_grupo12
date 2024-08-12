@@ -161,7 +161,7 @@ function SongNew() {
     };
 
     return (
-        <div>
+        <div className='song-new-container'>
             <h2>Agregar Nueva Canción</h2>
             <form onSubmit={handleSubmit}>
                 <div>
