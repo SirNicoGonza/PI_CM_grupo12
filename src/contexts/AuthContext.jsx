@@ -19,7 +19,7 @@ function reducer(state, action) {
             return {
                 ...state,
                 token: action.payload,
-                //token: localStorage.getItem('token'),
+                token: localStorage.getItem('token'),
                 isAuthenticated: true,
             };
         case ACTIONS.LOGOUT:
@@ -43,7 +43,7 @@ function AuthProvider({ children }) {
     const actions = {
         login: (token) => {
             dispatch({ type: ACTIONS.LOGIN, payload: token });
-            //localStorage.setItem("authToken", token);
+            localStorage.setItem("authToken", token);
             const origin = location.state?.from?.pathname || "/";
             navigate(origin);
         },
