@@ -10,6 +10,7 @@ import Profile from "../components/profile/Profile";
 import GenresList from "../components/genres/GenresList";
 import AlbumsList from "../components/albums/AlbumsList";
 import Playlists from "../components/playlists/Playlists";
+import PlaylistNew from "../components/playlists/PlaylistNew";
 import SongsLists from "../components/songs/SongsList";
 import SongNew from "../components/songs/SongNew";
 import ArtistIdDetail from "../components/artists/ArtistIdDetail";
@@ -95,6 +96,14 @@ const Router = createBrowserRouter([
                 <ProtectedRoute>
                     <PlaylistDetail />
                 </ProtectedRoute>
+                ),
+            },
+            {
+                path: "playlists/new",
+                element: (
+                    <ProtectedRoute>
+                        <PlaylistNew />
+                    </ProtectedRoute>
                 ),
             },
             {
