@@ -187,6 +187,10 @@ const Router = createBrowserRouter([
         path: "*",
         element: <NotFound />,
     }
-]);
+]
+{
+	basename: "/PI_CM_grupo12"
+}                                  
+);
 
 export { Router };

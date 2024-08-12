@@ -106,8 +106,17 @@
 	flex-direction: column;
 	align-items: center;
 	justify-content: center;
-	height: 25vh;
+	height: auto;
 	text-align: center;
+	width: 100%;
+	max-width: 800px;
+	margin: 0 auto;
+	padding: 20px;
+}
+
+.playlist-new-container h2 {
+	width: 100%;
+	margin-bottom: 20px;
 }
 
 .playlist-new-container form {
