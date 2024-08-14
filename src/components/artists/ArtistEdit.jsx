@@ -6,11 +6,12 @@ import './ArtistNew.css';
 
 function ArtistEdit() {
     const { token } = useAuth("state");
-    const { id } = useParams(); // Obtén el id del artista desde los parámetros de la URL
+    const { id } = useParams();
     const navigate = useNavigate();
     const [name, setName] = useState('');
     const [bio, setBio] = useState('');
     const [website, setWebsite] = useState('');
+    const [image, setImage] = useState(null);
     const [error, setError] = useState(null);
     const [isSubmitting, setIsSubmitting] = useState(false);
     const [successMessage, setSuccessMessage] = useState('');
@@ -31,6 +32,7 @@ function ArtistEdit() {
             setName(artistData.name || ''); 
             setBio(artistData.bio || '');   
             setWebsite(artistData.website || '');
+            setImage(artistData.image || null);
         }
     }, [artistData]);
 
@@ -38,18 +40,19 @@ function ArtistEdit() {
         e.preventDefault();
         setIsSubmitting(true);
 
+        const formData = new FormData();
+        formData.append('name', name);
+        formData.append('bio', bio);
+        formData.append('website', website);
+        if (image) formData.append('image', image);
+
         try {
             const response = await fetch(`${import.meta.env.VITE_API_BASE_URL_HARMONY}/artists/${id}/`, {
                 method: 'PATCH',
                 headers: {
-                    'Content-Type': 'application/json',
                     Authorization: `Token ${token}`,
                 },
-                body: JSON.stringify({
-                    name: name,
-                    bio: bio,
-                    website: website,
-                }),
+                body: formData,
             });
 
             if (!response.ok) {
@@ -101,6 +104,16 @@ function ArtistEdit() {
                         name='artist-website'
                         value={website}
                         onChange={(e) => setWebsite(e.target.value)}
+                    />
+                </div>
+                <div>
+                    <label htmlFor='artist-image'>Imagen del Artista:</label>
+                    <input
+                        type='file'
+                        id='artist-image'
+                        name='artist-image'
+                        accept='image/*'
+                        onChange={(e) => setImage(e.target.files[0])}
                     />
                 </div>
                 <button type='submit' disabled={isSubmitting}>
