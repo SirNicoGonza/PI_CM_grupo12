@@ -9,28 +9,36 @@ function ArtistNew() {
     const [name, setName] = useState('');
     const [bio, setBio] = useState('');
     const [website, setWebsite] = useState('');
+    const [image, setImage] = useState(null); 
     const [error, setError] = useState(null);
     const [isSubmitting, setIsSubmitting] = useState(false);
     const [successMessage, setSuccessMessage] = useState('');
+
+    const handleImageChange = (e) => {
+        setImage(e.target.files[0]); 
+    };
 
     const handleSubmit = async (e) => {
         e.preventDefault();
         setIsSubmitting(true);
 
         try {
+            const formData = new FormData();
+            formData.append('name', name);
+            formData.append('bio', bio);
+            formData.append('website', website);
+            if (image) {
+                formData.append('image', image); 
+            }
+
             const response = await fetch(
                 `${import.meta.env.VITE_API_BASE_URL_HARMONY}/artists/`,
                 {
                     method: 'POST',
                     headers: {
-                        'Content-Type': 'application/json',
                         Authorization: `Token ${token}`,
                     },
-                    body: JSON.stringify({
-                        name: name,
-                        bio: bio,
-                        website: website,
-                    }),
+                    body: formData,
                 }
             );
 
@@ -43,6 +51,7 @@ function ArtistNew() {
             setName('');
             setBio('');
             setWebsite('');
+            setImage(null); 
         } catch (error) {
             setError(error.message);
         } finally {
@@ -53,7 +62,7 @@ function ArtistNew() {
     return (
         <div className="artist-new-container">
             <h2>Crear Nuevo Artista</h2>
-            <form onSubmit={handleSubmit}>
+            <form onSubmit={handleSubmit} encType="multipart/form-data">
                 <div>
                     <label htmlFor='artist-name'>Nombre del Artista:</label>
                     <input
@@ -84,6 +93,16 @@ function ArtistNew() {
                         onChange={(e) => setWebsite(e.target.value)}
                     />
                 </div>
+                <div>
+                    <label htmlFor='artist-image'>Imagen del Artista:</label>
+                    <input
+                        type='file'
+                        id='artist-image'
+                        name='artist-image'
+                        accept='image/*'
+                        onChange={handleImageChange}
+                    />
+                </div>
                 <button type='submit' disabled={isSubmitting}>
                     {isSubmitting ? 'Enviando...' : 'Crear Artista'}
                 </button>
@@ -98,3 +117,4 @@ function ArtistNew() {
 }
 
 export default ArtistNew;
+

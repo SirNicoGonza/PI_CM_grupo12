@@ -20,6 +20,7 @@ import GenresLists from "../components/genres/GenresList";
 import GenresDetail from "../components/genres/GenresDetail";
 import GenreNew from "../components/genres/GenreNew";
 import ArtistEdit from "../components/artists/ArtistEdit";
+import ArtistSongs from "../components/artists/ArtistSongs";
 
 const Router = createBrowserRouter([
     {
@@ -63,6 +64,14 @@ const Router = createBrowserRouter([
                 element: (
                 <ProtectedRoute>
                     <ArtistEdit />
+                </ProtectedRoute>
+                ),
+            },
+            {
+                path: "artists/:id/songs",
+                element: (
+                <ProtectedRoute>
+                    <ArtistSongs />
                 </ProtectedRoute>
                 ),
             },
