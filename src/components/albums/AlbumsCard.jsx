@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from "react-router-dom";
 import { useAuth } from '../../contexts/AuthContext';
+import "../albums/AlbumsCard.css";
 
 
 function AlbumsCard({ albumes }){
@@ -76,13 +77,11 @@ function AlbumsCard({ albumes }){
 
     return (
         <div className="card" onClick={handleCardClick}>
+            <i style={imageStyle}></i>
             <div className="card-content">
-                <p className="albums-name">{albumes.title}</p>
-                <i style={imageStyle}></i>
+                <p className="albums-name">{albumes.title}</p>                
                 <p className="albums-artist">{artist.name}</p>
                 <p className="albums-year">{albumes.year}</p>
-                <br />
-                <br />
                 {canEdit && (
                 <>
                     <button onClick={handleEditClick}>Editar</button>
