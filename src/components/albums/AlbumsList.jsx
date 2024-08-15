@@ -2,6 +2,7 @@ import AlbumsCard from "./AlbumsCard";
 import useFetch from "../../hooks/useFetch";
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import "../albums/AlbumsList.css";
 
 function AlbumsList() {
     const [albums, setAlbums] = useState([]);
@@ -54,8 +55,8 @@ function AlbumsList() {
     if (isError) return <p>Error al cargar los albums</p>;
 
     return (
-        <div>
-            <div className="my-5">
+        <div className="albums-new-container">
+            <div>
                 <h2 className="title">Lista de Albums</h2>
                 <div className='search-input-container'>
 					<input
