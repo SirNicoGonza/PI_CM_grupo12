@@ -1,8 +1,9 @@
 import React from 'react';
 import { useNavigate } from "react-router-dom";
+import imagen from 'src/assets/music.png';
 
 function PlaylistCard({ playlist }) {
-    const imageUrl = playlist.image || 'src/assets/music.png';
+    const imageUrl = playlist.image || imagen;
     const navigate = useNavigate();
     const handlePlaylistClick = () => {
         navigate(`/playlists/${playlist.id}`)
