@@ -21,6 +21,9 @@ import GenresDetail from "../components/genres/GenresDetail";
 import GenreNew from "../components/genres/GenreNew";
 import ArtistEdit from "../components/artists/ArtistEdit";
 import ArtistSongs from "../components/artists/ArtistSongs";
+import AlbumNew from "../components/albums/AlbumNew";
+import AlbumDetail from "../components/albums/AlbumDetail";
+import AlbumEdit from "../components/albums/AlbumEdit";
 
 const Router = createBrowserRouter([
     {
@@ -88,6 +91,30 @@ const Router = createBrowserRouter([
                 element: (
                 <ProtectedRoute>
                     <AlbumsList />
+                </ProtectedRoute>
+                ),
+            },
+            {
+                path: "albums/:id",
+                element: (
+                <ProtectedRoute>
+                    <AlbumDetail />
+                </ProtectedRoute>
+                ),
+            },
+            {
+                path: "albums/:id/edit",
+                element: (
+                <ProtectedRoute>
+                    <AlbumEdit />
+                </ProtectedRoute>
+                ),
+            },
+            {
+                path: "albums/new",
+                element: (
+                <ProtectedRoute>
+                    <AlbumNew />
                 </ProtectedRoute>
                 ),
             },
