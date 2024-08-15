@@ -1,6 +1,6 @@
 import React from 'react';
 import { useNavigate } from "react-router-dom";
-import imagen from 'src/assets/music.png';
+import imagen from '../../assets/music.png';
 
 function PlaylistCard({ playlist }) {
     const imageUrl = playlist.image || imagen;
