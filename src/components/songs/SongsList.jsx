@@ -10,10 +10,11 @@ function SongsList() {
     const [currentPage, setCurrentPage] = useState(1); // Página actual
     const [totalPages, setTotalPages] = useState(0); // Total de páginas
     const songsPerPage = 5; // Cantidad de canciones por página
+    const [searchQuery, setSearchQuery] = useState(''); 
     const navigate = useNavigate();
 
     // Generar la URL de la API para la página actual
-    const nextUrl = `${import.meta.env.VITE_API_BASE_URL_HARMONY}/songs/?page=${currentPage}&page_size=${songsPerPage}`;
+    const nextUrl = `${import.meta.env.VITE_API_BASE_URL_HARMONY}/songs/?page=${currentPage}&page_size=${songsPerPage}&title=${searchQuery}`;
 
     const [{ data, isError, isLoading }, doFetch] = useFetch(nextUrl, {});
 
@@ -42,7 +43,12 @@ function SongsList() {
 
     const handleNewSong = () => {
         navigate('/songs/new')
-    }
+    };
+
+    const handleSearchChange = (e) => {
+		setSearchQuery(e.target.value);
+		setCurrentPage(1); 
+	};
 
     if (isLoading && songs.length === 0) return <p>Cargando...</p>;
     if (isError) return <p>Error al cargar las canciones</p>;
@@ -52,6 +58,15 @@ function SongsList() {
         <div>
             <div className="my-5">
                 <h2 className="title">Lista de Canciones</h2>
+                <div className='search-input-container'>
+					<input
+						type='text'
+						value={searchQuery}
+						onChange={handleSearchChange}
+						placeholder='Buscar canción...'
+						className='song-search-input'
+					/>
+				</div>
                 <button className="new-songs-button" onClick={handleNewSong}>Nueva Cancion</button>
                 <ul>
                     {songs.map(song => (
@@ -61,6 +76,12 @@ function SongsList() {
                     ))}
                 </ul>
                 <div className="pagination-controls">
+                    <button
+						    onClick={() => setCurrentPage(1)}
+						    disabled={currentPage === 1}
+					>
+						Primera
+					</button>
                     <button onClick={handlePreviousPage} disabled={currentPage === 1}>
                         Anterior
                     </button>
@@ -68,6 +89,12 @@ function SongsList() {
                     <button onClick={handleNextPage} disabled={currentPage === totalPages}>
                         Siguiente
                     </button>
+                    <button
+						onClick={() => setCurrentPage(totalPages)}
+						disabled={currentPage === totalPages || totalPages === 0}
+					>
+						Última
+					</button>
                 </div>
             </div>
         </div>
