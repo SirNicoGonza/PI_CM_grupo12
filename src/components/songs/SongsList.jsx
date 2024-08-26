@@ -52,7 +52,6 @@ function SongsList() {
 
     if (isLoading && songs.length === 0) return <p>Cargando...</p>;
     if (isError) return <p>Error al cargar las canciones</p>;
-    if (songs.length === 0) return <p>No hay canciones disponibles</p>;
 
     return (
         <div>
@@ -68,13 +67,17 @@ function SongsList() {
 					/>
 				</div>
                 <button className="new-songs-button" onClick={handleNewSong}>Nueva Cancion</button>
-                <ul>
-                    {songs.map(song => (
-                        <div key={song.id} className="column is-two-third">
-                            <SongsCard songss={song} />
-                        </div>
-                    ))}
-                </ul>
+                {songs.length=== 0 ? (
+                    <p>No hay canciones desponibles</p>
+                    ):(
+                    <ul>
+                        {songs.map(song => (
+                            <div key={song.id} className="column is-two-third">
+                                <SongsCard songss={song} />
+                            </div>
+                        ))}
+                    </ul>  
+                    )}              
                 <div className="pagination-controls">
                     <button
 						    onClick={() => setCurrentPage(1)}
