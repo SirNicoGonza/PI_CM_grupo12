@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useAuth } from '../../contexts/AuthContext';
 import { useNavigate, useParams } from 'react-router-dom';
 import useFetch from '../../hooks/useFetch';
-import './ArtistNew.css';
+import '../artists/ArtistNew.css';
 
 function ArtistEdit() {
     const { token } = useAuth("state");
@@ -73,7 +73,7 @@ function ArtistEdit() {
     if (!artistData) return <p>No se encontraron detalles del artista</p>;
 
     return (
-        <div className="artist-edit-container">
+        <div className="artist-new-container">
             <h2>Editar Artista</h2>
             <form onSubmit={handleSubmit}>
                 <div>

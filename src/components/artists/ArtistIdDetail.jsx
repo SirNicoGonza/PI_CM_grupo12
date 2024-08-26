@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import useFetch from '../../hooks/useFetch';
 import { useAuth } from '../../contexts/AuthContext';
+import '../artists/ArtistNew.css';
 
 function ArtistIdDetail() {
     const { id } = useParams();
@@ -78,7 +79,7 @@ function ArtistIdDetail() {
     const canEdit = user && artist.owner === user.user__id;
 
     return (
-        <div>
+        <div className='artist-new-container'>
             <h2>{artist.name}</h2>
             <img src={artist.image} alt={artist.name} style={{ width: '300px', height: '300px' }} />
             <p>{artist.bio}</p>
