@@ -90,6 +90,12 @@ function Playlists() {
 				</ul>
 				<div className='pagination-controls'>
 					<button
+						onClick={() => setCurrentPage(1)}
+						disabled={currentPage === 1}
+					>
+						Primera
+					</button>
+					<button
 						onClick={handlePreviousPage}
 						disabled={currentPage === 1}
 					>
@@ -103,6 +109,12 @@ function Playlists() {
 						disabled={currentPage === totalPages}
 					>
 						Siguiente
+					</button>
+					<button
+						onClick={() => setCurrentPage(totalPages)}
+						disabled={currentPage === totalPages || totalPages === 0}
+					>
+						Última
 					</button>
 				</div>
 			</div>
